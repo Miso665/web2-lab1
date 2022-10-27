@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const pg = require('pg');
 const db = require('./db');
+const { urlencoded } = require('express');
 const PORT = process.env.PORT || 5000;
 
 const routers = {

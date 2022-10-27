@@ -4,7 +4,7 @@ const router = express.Router();
 const moment = require("moment-timezone");
 const req = require("express/lib/request");
 
-router.get("/komentari/:idUtakmice", async (req, res) => {
+router.get("/:idUtakmice", async (req, res) => {
     try {
         const { idUtakmice } = req.params;
         const results = await Komentar.getAll(idUtakmice);
@@ -15,7 +15,7 @@ router.get("/komentari/:idUtakmice", async (req, res) => {
     }
 });
 
-router.post("/komentar/post", async (req, res) => {
+router.post("/post", async (req, res) => {
     try {
         const { idUtakmice, tekst, email } = req.body;
         const zona = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -30,7 +30,7 @@ router.post("/komentar/post", async (req, res) => {
     }
 });
 
-router.post("/komentar/edit", async (req, res) => {
+router.post("/edit", async (req, res) => {
     try {
         const { idKomentara, tekst } = req.body;
         const zona = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -46,7 +46,7 @@ router.post("/komentar/edit", async (req, res) => {
 
 });
 
-router.post("/komentar/delete/:idKomentara", async (req, res) => {
+router.post("/delete/:idKomentara", async (req, res) => {
     try {
         const { idKomentara } = req.params;
         const results = await Komentar.delete(idKomentara);

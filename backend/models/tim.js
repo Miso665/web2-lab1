@@ -9,6 +9,6 @@ module.exports = class Tim {
     static async getAll() {
         return (await db.query(
             `SELECT * FROM tim`
-        ));
+        )).rows;
     }
 }

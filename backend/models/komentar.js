@@ -13,7 +13,7 @@ module.exports = class Komentar {
         return (await db.query(
             `SELECT * FROM komentar
             WHERE id_utakmice = $1`, [id_utakmice]
-        ));
+        )).rows;
     }
 
     static async addNew(id_utakmice, tekst, email, vrijeme) {
@@ -28,7 +28,7 @@ module.exports = class Komentar {
             `UPDATE komentar
             SET tekst = $1, vrijeme = $2
             WHERE id_komentara = $3`, [id_komentara, tekst, vrijeme]
-        ))
+        ));
     }
 
     static async delete(id_komentara) {

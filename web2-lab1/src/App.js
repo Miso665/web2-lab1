@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/utakmice" element={<PregledUtakmica />} />
         <Route exact path="/tablica" element={<Tablica />} />
-        <Route exact path="/utamica/:idutakmice" element={<Utakmica />} />
+        <Route exact path="/utakmica/:id_utakmice" element={<Utakmica />} />
       </Routes>
     </BrowserRouter>
   )

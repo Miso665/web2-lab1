@@ -24,14 +24,14 @@ module.exports = class Utakmica {
                         rezultat,
                         (SELECT COUNT(*) 
                             FROM komentar
-                            WHERE komentar.id_utakmice = utakmica.id_utakmice) AS comment_count
+                            WHERE komentar.id_utakmice = utakmica.id_utakmice) AS broj_komentara
                         FROM tim tim1 
                             JOIN utakmica
                                 ON tim1.id_tima = utakmica.id_tima1
                             JOIN tim tim2
                                 ON tim2.id_tima = utakmica.id_tima2
                         ORDER BY datum_utakmice;`
-        ));
+        )).rows;
     }
 
     static async getUtakmica(id_utakmice) {
@@ -47,14 +47,14 @@ module.exports = class Utakmica {
             rezultat,
             (SELECT COUNT(*) 
                 FROM komentar
-                WHERE komentar.id_utakmice = utakmica.id_utakmice) AS comment_count
+                WHERE komentar.id_utakmice = utakmica.id_utakmice) AS broj_komentara
             FROM tim tim1 
                 JOIN utakmica
                     ON tim1.id_tima = utakmica.id_tima1
                 JOIN tim tim2
                     ON tim2.id_tima = utakmica.id_tima2
             WHERE utakmica.id_utakmice = $1`, [id_utakmice]
-        ))
+        )).rows;
     }
 
     static async addNew(id_tima1, id_tima2, datum_utakmice) {
